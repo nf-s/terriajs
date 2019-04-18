@@ -18,11 +18,11 @@ import CesiumWidget from 'terriajs-cesium/Source/Widgets/CesiumWidget/CesiumWidg
 import isDefined from '../Core/isDefined';
 import pollToPromise from '../Core/pollToPromise';
 import CesiumRenderLoopPauser from '../Map/CesiumRenderLoopPauser';
-import GlobeOrMap, { CameraView } from './GlobeOrMap';
 import Mappable, { ImageryParts } from './Mappable';
 import Terria from './Terria';
+import Viewer, { CameraView } from './Viewer';
 
-export default class Cesium implements GlobeOrMap {
+export default class Cesium implements Viewer {
     readonly terria: Terria;
     readonly cesiumWidget: CesiumWidget;
     readonly scene: Scene;

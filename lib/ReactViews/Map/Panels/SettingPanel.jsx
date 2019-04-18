@@ -4,6 +4,7 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { observer } from 'mobx-react';
 
 import ViewerMode from '../../../Models/ViewerMode';
 import ObserveModelMixin from '../../ObserveModelMixin';
@@ -14,13 +15,13 @@ import Styles from './setting-panel.scss';
 import DropdownStyles from './panel.scss';
 
 // The basemap and viewer setting panel
-const SettingPanel = createReactClass({
+const SettingPanel = observer(createReactClass({
     displayName: 'SettingPanel',
     mixins: [ObserveModelMixin],
 
     propTypes: {
         terria: PropTypes.object.isRequired,
-        allBaseMaps: PropTypes.array,
+        // allBaseMaps: PropTypes.array,
         viewState: PropTypes.object.isRequired
     },
 
@@ -33,11 +34,11 @@ const SettingPanel = createReactClass({
     selectBaseMap(baseMap, event) {
         event.stopPropagation();
         this.props.terria.baseMap = baseMap.catalogItem;
-        this.props.terria.baseMapContrastColor = baseMap.contrastColor;
+        // this.props.terria.baseMapContrastColor = baseMap.contrastColor;
 
         // We store the user's chosen basemap for future use, but it's up to the instance to decide
         // whether to use that at start up.
-        this.props.terria.setLocalProperty('basemap', baseMap.catalogItem.name);
+        // this.props.terria.setLocalProperty('basemap', baseMap.catalogItem.name);
     },
 
     mouseEnterBaseMap(baseMap) {
@@ -70,16 +71,16 @@ const SettingPanel = createReactClass({
                 return;
         }
         this.props.terria.viewerMode = newViewerMode;
-      
+
         // We store the user's chosen viewer mode for future use.
-        this.props.terria.setLocalProperty('viewermode', newViewerMode);
+        // this.props.terria.setLocalProperty('viewermode', newViewerMode);
         this.props.terria.currentViewer.notifyRepaintRequired();
     },
 
     render() {
         const that = this;
         const currentViewer = this.props.terria.viewerMode;
-        const currentBaseMap = this.props.terria.baseMap ? this.props.terria.baseMap.name : '(None)';
+        // const currentBaseMap = this.props.terria.baseMap ? this.props.terria.baseMap.name : '(None)';
 
         const dropdownTheme = {
             outer: Styles.settingPanel,
@@ -112,7 +113,7 @@ const SettingPanel = createReactClass({
                         </For>
                     </ul>
                 </div>
-                <div className={classNames(Styles.baseMap, DropdownStyles.section)}>
+                {/* <div className={classNames(Styles.baseMap, DropdownStyles.section)}>
                     <label className={DropdownStyles.heading}> Base Map </label>
                     <label className={DropdownStyles.subHeading}>{this.state.activeMap}</label>
                     <ul className={Styles.baseMapSelector}>
@@ -130,10 +131,10 @@ const SettingPanel = createReactClass({
                             </li>
                         </For>
                     </ul>
-                </div>
+                </div> */}
             </MenuPanel>
         );
     },
-});
+}));
 
 module.exports = SettingPanel;

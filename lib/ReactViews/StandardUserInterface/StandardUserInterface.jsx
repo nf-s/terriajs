@@ -11,7 +11,7 @@ import ExplorerWindow from '../ExplorerWindow/ExplorerWindow';
 import MapColumn from './MapColumn';
 import MapInteractionWindow from '../Notification/MapInteractionWindow';
 import MapNavigation from '../Map/MapNavigation';
-// import MenuBar from '../Map/MenuBar';
+import MenuBar from '../Map/MenuBar';
 import ExperimentalFeatures from '../Map/ExperimentalFeatures';
 // import MobileHeader from '../Mobile/MobileHeader';
 import Notification from '../Notification/Notification';
@@ -190,11 +190,10 @@ const StandardUserInterface = observer(createReactClass({
 
                 <If condition={!this.props.viewState.hideMapUi()}>
                     <div className = {classNames({[Styles.explorerPanelIsVisible]: this.props.viewState.explorerPanelIsVisible})}>
-                        {/* <MenuBar terria={terria}
+                        <MenuBar terria={terria}
                                  viewState={this.props.viewState}
-                                 allBaseMaps={allBaseMaps}
                                  menuItems={customElements.menu}
-                        /> */}
+                        />
                         <MapNavigation terria={terria}
                                        viewState={this.props.viewState}
                                        navItems={customElements.nav}
