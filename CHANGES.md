@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+### Next Release
+
+* Fixed Map View '2D' button activating 3D ellipsoid viewer when the instance has no terrain.
+
+### v7.2.1
+
+* Removed an extra close curly brace from `regionMapping.json`.
+
 ### v7.2.0
 
 * Added `GltfCatalogItem` for displaying [glTF](https://www.khronos.org/gltf/) models on the 3D scene.

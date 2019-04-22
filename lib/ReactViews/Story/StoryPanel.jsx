@@ -19,7 +19,7 @@ export function buildPath(item) {
 
 export function activateStory(story, terria) {
      if(story.shareData) {
-        terria.updateFromStartData(story.shareData).then(()=>{
+        terria.updateFromStartData(story.shareData, false).then(()=>{
         const nowViewingPaths = story.shareData.initSources.reduce((p, c) => {
           if (c.sharedCatalogMembers) {
             return p.concat(Object.keys(c.sharedCatalogMembers));
@@ -139,7 +139,7 @@ const StoryPanel = createReactClass({
       const locationBtn = <button className ={Styles.locationBtn} title='center scene' onClick = {this.onCenterScene.bind(this, story)}><Icon glyph ={Icon.GLYPHS.location}/></button>;
       const exitBtn = <button className={Styles.exitBtn} title="exit story" onClick={this.slideOut}><Icon glyph={Icon.GLYPHS.close}/></button>;
         return (
-          <Swipeable onSwipedLeft = {this.goToPrevStory} onSwipedRight={this.goToNextStory}>
+          <Swipeable onSwipedLeft = {this.goToNextStory} onSwipedRight={this.goToPrevStory}>
                 <div className={classNames(Styles.fullPanel, {[Styles.isHidden]: !this.props.viewState.storyShown, [Styles.isPushedUp]: this.props.viewState.chartIsOpen})}>
                         <div className={classNames(Styles.storyContainer, {[Styles.isMounted]: this.state.inView})} key={story.id}>
                           <Medium>
